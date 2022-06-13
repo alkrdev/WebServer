@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Item {
+  id              Int         @id @default(autoincrement())
+  title           String      @db.VarChar(255)
+  description     String      @db.VarChar(255)
+  imageSrc        String      @default("./../images/firework.jpg")
+  imageAlt        String      @default("This is a product")
+  createdAt       DateTime    @default(now()) @db.Timestamp(6)
+  updatedAt       DateTime    @default(now()) @updatedAt
+  category        String      @default("battery")
+  color           String      @default("blue")
+  remaining       Int
+  price           Int         @default(10)
+  soldOut         Boolean     @default(false)
+}
+
+model Cart {
+  id              String      @id
+  content         Json?       
+}

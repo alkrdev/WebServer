@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `Item` ADD COLUMN `category` VARCHAR(191) NOT NULL DEFAULT 'battery',
+    ADD COLUMN `color` VARCHAR(191) NOT NULL DEFAULT 'blue';
