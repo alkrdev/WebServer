@@ -6,7 +6,6 @@ const port = 8080;
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded())
-app.use(express.static(__dirname + '/public'));
 
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
