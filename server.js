@@ -34,13 +34,22 @@ app.get("/items", async (req, res) => {
 app.put("/items/:id", async (req, res) => {    
     var id = req.params.id
 
-    console.log(req.body)
+    const { title, description, imageSrc, category, color, price, remaining, soldOut }
 
     await prisma.item.update({
         where: {
-            id: id
+            id: Number(id)
         },
-        data: req.body.product
+        data: {            
+            title: title, 
+            description: description, 
+            imageSrc: imageSrc, 
+            category: category, 
+            color: color, 
+            price: price, 
+            remaining: remaining, 
+            soldOut: soldOut
+        }
     })
 
     res.end();
