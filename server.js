@@ -34,7 +34,7 @@ app.get("/items", async (req, res) => {
 app.put("/items/:id", async (req, res) => {    
     var id = req.params.id
 
-    const { title, description, imageSrc, category, color, price, remaining, soldOut }
+    const { title, description, imageSrc, category, color, price, remaining, soldOut } = req.body
 
     await prisma.item.update({
         where: {
