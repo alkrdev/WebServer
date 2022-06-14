@@ -43,7 +43,7 @@ app.get("/carts/:id", async (req, res) => {
     })
 
     if (cart === null) {
-        res.end(401)
+        res.status(401).send('Sorry, we cannot find that!');
     } else {
         res.json(cart)
     }

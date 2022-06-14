@@ -23,6 +23,7 @@ model Item {
   remaining       Int
   price           Int         @default(10)
   soldOut         Boolean     @default(false)
+  amount          Int         @default(1)
 }
 
 model Cart {
