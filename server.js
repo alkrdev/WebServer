@@ -46,8 +46,8 @@ app.put("/items/:id", async (req, res) => {
             imageSrc: imageSrc, 
             category: category, 
             color: color, 
-            price: price, 
-            remaining: remaining, 
+            price: Number(price), 
+            remaining: Number(remaining), 
             soldOut: soldOut
         }
     })
