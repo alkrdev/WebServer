@@ -31,6 +31,21 @@ app.get("/items", async (req, res) => {
     res.json(items)
 });
 
+app.put("/items/:id", async (req, res) => {    
+    var id = req.params.id
+
+    console.log(req.body)
+
+    await prisma.item.update({
+        where: {
+            id: id
+        },
+        data: req.body.product
+    })
+
+    res.end();
+})
+
 app.post("/carts", async (req, res) => {
     await prisma.cart.create({
         data: {
