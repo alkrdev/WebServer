@@ -10,7 +10,12 @@ const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://webapplication-wdjh6.ondigitalocean.app');
+    const allowedOrigins = ['https://web.kristensen.tech', 'https://webapplication-wdjh6.ondigitalocean.app', 'http://127.0.0.1:9000', 'http://localhost:9000'];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    // res.setHeader('Access-Control-Allow-Origin', 'https://webapplication-wdjh6.ondigitalocean.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Access-Control-Allow-Credentials', true);
