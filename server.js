@@ -10,7 +10,14 @@ app.use(express.urlencoded())
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://webapplication-wdjh6.ondigitalocean.app/');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
 
+    next();
+});
 
 app.get("/items", async (req, res) => {
     var items = await prisma.item.findMany()
